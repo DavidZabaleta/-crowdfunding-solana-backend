@@ -1,14 +1,26 @@
 [features]
 seeds = false
 [programs.localnet]
-crowfunding_solana = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+crowfunding_solana = ""
 
 [registry]
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "localnet"
-wallet = "/Users/davzabal/.config/solana/id.json"
+# Network to deploy
+cluster = "devnet"
+# Location of the wallet to deploy
+# TODO: Move this section to de README in how to deploy
+# Steps to deploy the app
+# 1. To create a wallet to deploy the first time run: solana-keygen new -o id.json
+# 2. Airdrop Solana to the pubkey generated previously
+# 3. Build the program
+# 4. Get the program id by running: solana address -k ./target/deploy/crowfunding_solana-keypair.json
+# 5. Replace the new program id in Anchor.toml -> crowfunding_solana and lib.rs -> declare_id
+# 6. Build the app again
+# 7. And finally run: anchor deploy
+# 8. Verify in the Solana explorer [https://explorer.solana.com/] that the app is deployed by searching with the program id
+wallet = "./id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
